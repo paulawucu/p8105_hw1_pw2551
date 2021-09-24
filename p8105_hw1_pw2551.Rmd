@@ -15,6 +15,7 @@ library(tidyverse)
 ```
 
 ### **Problem 1**:
+Create a data frame with variables:
 ```{r}
 set.seed(1) 
 p1_df = tibble(
@@ -35,6 +36,7 @@ logical_col = pull(p1_df, vec_logical)
 char_col = pull(p1_df, vec_char)
 factor_col = pull(p1_df, vec_factor)
 
+# calculate means
 mean(numeric_col)
 mean(logical_col)
 mean(char_col)
@@ -56,17 +58,21 @@ as.numeric(factor_col)
 
 
 ### **Problem 2**:
+Download and read dataset:
 ```{r}
 # packages installed in the terminal
 data("penguins", package = "palmerpenguins")
 penguins
 ```
 
-Variable names: `r variable.names(penguins)`. <br>
-For this penguins data set, there are `r nrow(penguins)` rows 
+* The variable names are: `r variable.names(penguins)`. Among these `r ncol(penguins)` attributes, "bill_length_mm", "bill_depth_mm", "flipper_length_mm", and "body_mass_g" look important.  <br>
+* For this penguins data set, there are `r nrow(penguins)` rows 
 and `r ncol(penguins)` columns. <br>
-The flipper length (mm) is 
+* The flipper length (mm) is 
 `r mean(pull(penguins, 'flipper_length_mm'), na.rm = TRUE)`
+
+# Here is a table showing the first 10 rows of these 4 variables I mentioned above: `r head(select(penguins, c("bill_length_mm", "bill_depth_mm", "flipper_length_mm", "body_mass_g")), 10)
+
 
 ```{r}
 bill_len = pull(penguins, bill_length_mm)
