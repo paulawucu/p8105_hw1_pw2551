@@ -55,6 +55,7 @@ as.numeric(factor_col)
 * For logical variables, the method `as.numeric()` will convert TRUE to 1 and FALSE to 0. <br>
 * For factor variables, according to *rdocumentation.com*, `as.numeric()` will return the underlying numeric representation. Since there are three "levels" for factor variables, each of the element is converted to its arbitrarily corresponding number. <br>
 * For character variables, `as.numeric()` gives us a "NAs introduced by coercion" warning. Texts just can't be converted into numbers. <br>
+* `as.numeric()` helps explain why logic variables work and character variables don't work when I tried to take the mean. However, it doesn't help explain why factor variables don't work: factor variables can be converted to numeric variables based on their levels, but applying the `mean()` function on factor variables yields an NA result. <br>
 
 
 ### **Problem 2**:
