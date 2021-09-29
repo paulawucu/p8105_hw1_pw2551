@@ -64,7 +64,7 @@ Download and read dataset:
 data("penguins", package = "palmerpenguins")
 penguins
 ```
-* The variable names are: `r variable.names(penguins)`. Among these `r ncol(penguins)` attributes, "bill_length_mm", "bill_depth_mm", "flipper_length_mm", and "body_mass_g" look important and meaningful to me. The mean values for these variables will be calculated in r code chunks below. <br>
+* The variable names are: `r variable.names(penguins)`. Among these `r ncol(penguins)` attributes, "bill_length_mm", "bill_depth_mm", "flipper_length_mm", and "body_mass_g" look important and meaningful to me. The values, specifically the mean values, for these important variables will be calculated in r code chunks below. <br>
 ```{r, collapse = TRUE}
 # I get rid of the Null values
 bill_l = mean(pull(penguins, bill_length_mm), na.rm = TRUE)
@@ -79,12 +79,9 @@ c(bill_l, bill_d, flip_l, body_m)
 
 To plot the scatterplot using `ggplot`:
 ```{r}
-bill_len = pull(penguins, bill_length_mm)
-flip_len = pull(penguins, flipper_length_mm)
-species_color = pull(penguins, species)
-ggplot(penguins, aes(x = bill_len, y = flip_len, col = species_color)) + 
+ggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm, col = species)) + 
   geom_point() + 
-  ggtitle("Flipper and Bill Length for Penguins") +
+  ggtitle("Flipper and Bill Length for Penguins") + 
   theme(plot.title = element_text(hjust = 0.5)) +
   labs(y = "Flipper Length (mm)", x = "Bill Length (mm)")
 ```
