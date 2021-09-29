@@ -17,7 +17,7 @@ library(tidyverse)
 ### **Problem 1**:
 Create a data frame with variables:
 ```{r}
-set.seed(1) 
+set.seed(1)
 p1_df = tibble(
   vec_numeric = rnorm(10),
   vec_logical = vec_numeric > 0,
@@ -64,7 +64,7 @@ Download and read dataset:
 data("penguins", package = "palmerpenguins")
 penguins
 ```
-* The variable names are: `r variable.names(penguins)`. Among these `r ncol(penguins)` attributes, "bill_length_mm", "bill_depth_mm", "flipper_length_mm", and "body_mass_g" look important and meaningful. The mean values for these variables will be calculated in r code chunks below. <br>
+* The variable names are: `r variable.names(penguins)`. Among these `r ncol(penguins)` attributes, "bill_length_mm", "bill_depth_mm", "flipper_length_mm", and "body_mass_g" look important and meaningful to me. The mean values for these variables will be calculated in r code chunks below. <br>
 ```{r, collapse = TRUE}
 # I get rid of the Null values
 bill_l = mean(pull(penguins, bill_length_mm), na.rm = TRUE)
@@ -75,7 +75,7 @@ c(bill_l, bill_d, flip_l, body_m)
 ```
 * Thus, the means, rounded to 2 decimal places, for "bill_length_mm" is `r round(bill_l, digits = 2)`, for "bill_depth_mm" is `r round(bill_d, digits = 2)`, for "flipper_length_mm" is `r round(flip_l, digits = 2)`, and for "body_mass_g" is `r round(body_m, digits = 2)`. <br>
 * For this penguins data set, there are `r nrow(penguins)` rows and `r ncol(penguins)` columns. <br>
-* The flipper length (mm) is mentioned above, which is `r round(flip_l, digits =2)`. <br>
+* The mean of flipper length (mm) is mentioned above, which is `r round(flip_l, digits =2)`. <br>
 
 To plot the scatterplot using `ggplot`:
 ```{r}
@@ -86,7 +86,7 @@ ggplot(penguins, aes(x = bill_len, y = flip_len, col = species_color)) +
   geom_point() + 
   ggtitle("Flipper and Bill Length for Penguins") +
   theme(plot.title = element_text(hjust = 0.5)) +
-  labs(y = "Flipper Length (mm)",x = "Bill Length (mm)")
+  labs(y = "Flipper Length (mm)", x = "Bill Length (mm)")
 ```
 
 To save the graph using `ggsave`:
